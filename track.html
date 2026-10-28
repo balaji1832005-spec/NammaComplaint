@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track complaint — NammaComplaint</title>
+  <meta name="description" content="NammaComplaint — report civic problems in your neighbourhood and track their resolution." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b4381f'/><circle cx='16' cy='16' r='6' fill='%23f7efe1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500;700;800&family=Hind+Madurai:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text"><strong>Namma<em>Complaint</em></strong><small data-i18n="brand.tag">Your city. Your voice.</small></span>
+    </a>
+    <nav class="nav">
+      <a href="/" data-i18n="nav.file" >File a complaint</a>
+      <a href="/track" data-i18n="nav.track" aria-current="page">Track status</a>
+      <a href="/admin" data-i18n="nav.admin" >Officials</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ta">தமிழ்</button>
+    </div>
+  </header>
+  <main class="page narrow">
+    <section class="hero compact">
+      <h1 data-i18n="track.title">Track your complaint</h1>
+      <p class="lead" data-i18n="track.lead">Enter the tracking ID you received when you filed the complaint.</p>
+    </section>
+    <form class="search" id="track-form">
+      <input name="id" id="track-input" required autocomplete="off" spellcheck="false" data-i18n-placeholder="track.placeholder" aria-label="Tracking ID" />
+      <button class="btn primary" type="submit" data-i18n="track.button">Check status</button>
+    </form>
+    <p class="error" id="track-error" role="alert" hidden></p>
+    <article class="card result" id="track-result" hidden></article>
+  </main>
+  <footer class="footer"><p data-i18n="footer.text">NammaComplaint — a civic grievance portal for every neighbourhood.</p></footer>
+  <script type="module" src="/src/track.ts"></script>
+</body></html>

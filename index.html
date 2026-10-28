@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NammaComplaint — File a civic complaint</title>
+  <meta name="description" content="NammaComplaint — report civic problems in your neighbourhood and track their resolution." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b4381f'/><circle cx='16' cy='16' r='6' fill='%23f7efe1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500;700;800&family=Hind+Madurai:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text"><strong>Namma<em>Complaint</em></strong><small data-i18n="brand.tag">Your city. Your voice.</small></span>
+    </a>
+    <nav class="nav">
+      <a href="/" data-i18n="nav.file" aria-current="page">File a complaint</a>
+      <a href="/track" data-i18n="nav.track" >Track status</a>
+      <a href="/admin" data-i18n="nav.admin" >Officials</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ta">தமிழ்</button>
+    </div>
+  </header>
+  <main class="page home">
+    <section class="hero">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Civic grievance portal</p>
+      <h1 data-i18n="hero.title">Report a problem in your neighbourhood.</h1>
+      <p class="lead" data-i18n="hero.lead">Potholes, water supply, broken streetlights, uncleared garbage — tell us what's wrong and where. You'll get a tracking ID to follow every update.</p>
+      <ol class="steps">
+        <li><span>01</span><b data-i18n="hero.step1">Describe the issue</b></li>
+        <li><span>02</span><b data-i18n="hero.step2">Get a tracking ID</b></li>
+        <li><span>03</span><b data-i18n="hero.step3">Follow progress</b></li>
+      </ol>
+    </section>
+
+    <section class="card form-card" aria-labelledby="form-title">
+      <form id="complaint-form" novalidate>
+        <h2 id="form-title" data-i18n="form.title">New complaint</h2>
+        <div class="row">
+          <label><span data-i18n="form.name">Your name</span>
+            <input name="name" required maxlength="120" autocomplete="name" /></label>
+          <label><span data-i18n="form.phone">Phone number</span>
+            <input name="phone" required type="tel" inputmode="tel" maxlength="20" autocomplete="tel" /></label>
+        </div>
+        <label><span data-i18n="form.category">Category</span>
+          <select name="category" required id="category-select"></select></label>
+        <label><span data-i18n="form.area">Area / Street / Landmark</span>
+          <input name="area" required maxlength="200" data-i18n-placeholder="form.areaHint" /></label>
+        <label><span data-i18n="form.description">What is the problem?</span>
+          <textarea name="description" required minlength="10" maxlength="2000" rows="5"></textarea>
+          <small class="hint" data-i18n="form.descriptionHint">At least 10 characters.</small></label>
+        <p class="error" id="form-error" role="alert" hidden></p>
+        <button class="btn primary" type="submit" id="submit-btn" data-i18n="form.submit">Submit complaint</button>
+        <p class="fineprint" data-i18n="form.privacy">Your name and phone are shared only with officials handling the complaint.</p>
+      </form>
+
+      <div id="success" class="success" hidden>
+        <div class="seal" aria-hidden="true">✓</div>
+        <h2 data-i18n="success.title">Complaint registered</h2>
+        <p data-i18n="success.body">Save this tracking ID.</p>
+        <p class="ticket" id="ticket-id"></p>
+        <div class="actions">
+          <button class="btn ghost" type="button" id="copy-btn" data-i18n="success.copy">Copy ID</button>
+          <a class="btn primary" id="track-link" href="/track" data-i18n="success.track">Track this complaint</a>
+        </div>
+        <button class="link" type="button" id="another-btn" data-i18n="success.another">File another</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><p data-i18n="footer.text">NammaComplaint — a civic grievance portal for every neighbourhood.</p></footer>
+  <script type="module" src="/src/main.ts"></script>
+</body></html>
