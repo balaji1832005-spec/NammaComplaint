@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Officials' desk — NammaComplaint</title>
+  <meta name="description" content="NammaComplaint — report civic problems in your neighbourhood and track their resolution." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23b4381f'/><circle cx='16' cy='16' r='6' fill='%23f7efe1'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500;700;800&family=Hind+Madurai:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text"><strong>Namma<em>Complaint</em></strong><small data-i18n="brand.tag">Your city. Your voice.</small></span>
+    </a>
+    <nav class="nav">
+      <a href="/" data-i18n="nav.file" >File a complaint</a>
+      <a href="/track" data-i18n="nav.track" >Track status</a>
+      <a href="/admin" data-i18n="nav.admin" aria-current="page">Officials</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ta">தமிழ்</button>
+    </div>
+  </header>
+  <main class="page wide">
+    <section id="login-view" class="narrow" hidden>
+      <div class="hero compact">
+        <h1 data-i18n="admin.title">Officials' desk</h1>
+        <p class="lead" data-i18n="admin.lead">Sign in with your official account to review and update complaints.</p>
+      </div>
+      <form class="card login" id="login-form">
+        <label><span data-i18n="admin.email">Email</span><input name="email" type="email" required autocomplete="username" /></label>
+        <label><span data-i18n="admin.password">Password</span><input name="password" type="password" required autocomplete="current-password" /></label>
+        <p class="error" id="login-error" role="alert" hidden></p>
+        <button class="btn primary" type="submit" data-i18n="admin.login">Sign in</button>
+        <button class="link" type="button" id="forgot-btn" data-i18n="admin.forgot">Forgot password?</button>
+        <p class="hint" id="forgot-msg" hidden data-i18n="admin.forgotSent">If that account exists, a reset link has been sent.</p>
+      </form>
+    </section>
+
+    <section id="password-view" class="narrow" hidden>
+      <div class="hero compact">
+        <h1 data-i18n="admin.setPassword">Set your password</h1>
+        <p class="lead" data-i18n="admin.setPasswordLead">Choose a password for your official account.</p>
+      </div>
+      <form class="card login" id="password-form">
+        <label><span data-i18n="admin.newPassword">New password</span><input name="password" type="password" required minlength="8" autocomplete="new-password" /></label>
+        <p class="error" id="password-error" role="alert" hidden></p>
+        <button class="btn primary" type="submit" data-i18n="admin.savePassword">Save password</button>
+      </form>
+    </section>
+
+    <section id="dash-view" hidden>
+      <div class="dash-head">
+        <div>
+          <h1 data-i18n="admin.title">Officials' desk</h1>
+          <p class="muted" id="who"></p>
+        </div>
+        <button class="btn ghost" id="logout-btn" type="button" data-i18n="admin.logout">Sign out</button>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="toolbar">
+        <select id="filter-status"></select>
+        <select id="filter-category"></select>
+        <button class="btn ghost" id="refresh-btn" type="button" data-i18n="admin.refresh">Refresh</button>
+      </div>
+      <p class="error" id="dash-error" role="alert" hidden></p>
+      <div id="list" class="list"></div>
+    </section>
+  </main>
+  <footer class="footer"><p data-i18n="footer.text">NammaComplaint — a civic grievance portal for every neighbourhood.</p></footer>
+  <script type="module" src="/src/admin.ts"></script>
+</body></html>
